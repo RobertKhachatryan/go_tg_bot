@@ -18,7 +18,7 @@ func main() {
 
 	// processor = processor.New()
 
-	//consumer.Start(fetcher,processor)
+	// consumer.Start(fetcher,processor)
 }
 
 func mustToken() string {

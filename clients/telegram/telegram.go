@@ -8,7 +8,7 @@ import (
 	"path"
 	"strconv"
 
-	"github.com/RobertKhachatryan/telegram_bot/lib/errors"
+	"github.com/RobertKhachatryan/telegram_bot/lib/e"
 )
 
 type Client struct {
@@ -62,7 +62,7 @@ func (c *Client) SendMessage(chatID int, text string) error {
 
 	_, err := c.doRequest(sendMessageMethod, q)
 	if err != nil {
-		return errors.Wrap("can't send message", err)
+		return e.Wrap("can't send message", err)
 	}
 
 	return nil
@@ -70,7 +70,7 @@ func (c *Client) SendMessage(chatID int, text string) error {
 
 func (c *Client) doRequest(method string, query url.Values) (data []byte, err error) {
 
-	defer func() { err = errors.WrapIfError("can't do request", err) }()
+	defer func() { err = e.WrapIfError("can't do request", err) }()
 
 	u := url.URL{
 		Scheme: "https",
